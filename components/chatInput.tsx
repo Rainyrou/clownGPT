@@ -17,7 +17,7 @@ function ChatInput({ chatId }: Props) {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const { data: model } = useSWR("model", {
-    fallbackData: "text-davinci-003",
+    fallbackData: "gpt-3.5-turbo-0613",
   });
 
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,9 +47,7 @@ function ChatInput({ chatId }: Props) {
       ),
       message
     );
-
     const notifications = toast.loading("ChatGPT is thinking...");
-
     await fetch("/api/askQuestion", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

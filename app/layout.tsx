@@ -1,14 +1,11 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import SideBar from "../components/sideBar";
 import { SessionProvider } from "../components/sessionProvider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../pages/api/auth/[...nextauth]";
 import Login from "@/components/login";
 import ClientProvider from "@/components/clientProvider";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ChatGPT Clone",
@@ -25,7 +22,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <SessionProvider session={session}>
           {!session ? (
             <Login />
